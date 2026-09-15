@@ -1,0 +1,15 @@
+<main class="inbox-page">
+  <header><a routerLink="/home">Shreya's Birthday</a><a routerLink="/wish-box">Back to Wish Box</a></header>
+  <section class="inbox-content">
+    <p class="eyebrow">Firebase inbox</p>
+    <h1>Shreya's Wishes 💌</h1>
+    <p class="intro">Yahan Wish Box se aayi hui wishes dikhengi.</p>
+    <button class="refresh" type="button" (click)="loadWishes()">Refresh wishes</button>
+    @if (loading && !wishes.length) { <p class="state">Loading wishes...</p> }
+    @if (error) { <p class="error" role="alert">{{ error }}</p> }
+    @if (!loading && !error && !wishes.length) { <p class="state">Abhi koi wish nahi aayi.</p> }
+    <div class="inbox-list">
+      @for (entry of wishes; track entry.createdAt) { <article><span>✦</span><div><p>{{ entry.wish }}</p><small>— {{ entry.sender }} · {{ entry.createdAt | date:'medium' }}</small></div></article> }
+    </div>
+  </section>
+</main>

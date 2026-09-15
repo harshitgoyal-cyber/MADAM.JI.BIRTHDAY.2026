@@ -1,0 +1,52 @@
+<main class="wish-page">
+  <header class="wish-header">
+    <a class="brand" routerLink="/home"><img src="/WhatsApp%20Image%202026-06-03%20at%2000.06.36.jpeg" alt="" /><span>Shreya's Birthday</span></a>
+    <nav aria-label="Birthday card sections"><a routerLink="/home">HOME</a><a routerLink="/story">OUR STORY</a><a routerLink="/memories">MEMORIES</a><a class="active" routerLink="/wish-box">WISH BOX</a><a routerLink="/home" fragment="gifts">SURPRISES</a><a class="celebrate-link" routerLink="/celebrate">CELEBRATE ✨</a></nav>
+    <button class="logout-button" type="button" (click)="logout()" aria-label="Return to login">↩</button>
+  </header>
+
+  <section class="wish-intro">
+    <p class="eyebrow">A little corner for your heart</p>
+    <h1>Put your wish in the <em>jar.</em> ✨</h1>
+    <p>Jo bhi tum feel kar rahi ho, jo dream dekh rahi ho, ya jo hum dono ke liye wish karti ho, yahan likh do.</p>
+  </section>
+
+  <section class="wish-layout">
+    <div class="jar-card">
+      <button class="jar-button" type="button" (click)="revealNextWish()" [attr.aria-label]="revealedWishes.length < jarWishes.length ? 'Open the next wish' : 'All wishes opened'">
+        <div class="jar-lid"></div><div class="jar"><div class="jar-shine"></div><div class="jar-wishes">✦　♥　✧　♡　✦</div></div>
+      </button>
+      <p class="jar-caption">{{ revealedWishes.length < jarWishes.length ? 'Tap the jar 7 times — one wish opens with every click ✦' : 'All your wishes are open ♡' }}</p>
+      <p class="jar-progress">{{ revealedWishes.length }} / {{ jarWishes.length }} wishes opened</p>
+      @if (revealedWishes.length) {
+        <div class="revealed-wishes">
+          @for (revealedWish of revealedWishes; track $index) { <article><span>{{ $index + 1 }}</span><p>{{ revealedWish }}</p></article> }
+        </div>
+      }
+    </div>
+    <form class="wish-form" (ngSubmit)="submitWish()" #wishForm="ngForm">
+      <p class="form-label">Write from the heart</p>
+      <label for="wish">Your wish</label>
+      <textarea id="wish" name="wish" [(ngModel)]="wish" (input)="clearSavedMessage()" maxlength="500" required placeholder="I wish we could..."></textarea>
+      <label for="sender">Your name <span>(optional)</span></label>
+      <input id="sender" name="sender" [(ngModel)]="sender" placeholder="Shreya" maxlength="40" />
+      <button class="save-button" type="submit" [disabled]="wishForm.invalid || saving">{{ saving ? 'Saving your wish...' : 'Seal my wish ✦' }}</button>
+      @if (saved) { <p class="saved-message">Your wish is safe in the jar, Shreya ♡</p> }
+      @if (saveError) { <p class="save-error">{{ saveError }}</p> }
+      <small class="storage-note">Your wish is sent to the private Firebase wish inbox.</small>
+    </form>
+  </section>
+
+  @if (wishes.length) {
+    <section class="inbox-section">
+      <p class="eyebrow">Wish jar preview</p>
+      <h2>Little wishes already inside</h2>
+      <div class="wish-list">
+        @for (entry of wishes; track entry.createdAt) { <article><span>✦</span><p>{{ entry.wish }}</p><small>— {{ entry.sender }}</small></article> }
+      </div>
+    </section>
+  }
+
+  <section class="prompt-row"><p class="eyebrow">Need a little spark?</p>@for (prompt of prompts; track prompt) { <button type="button" (click)="wish = prompt">{{ prompt }}</button> }</section>
+  <footer>Every wish looks better when it has your name on it ♡ <a routerLink="/home">Back to home</a></footer>
+</main>

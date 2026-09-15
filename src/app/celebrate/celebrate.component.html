@@ -1,0 +1,40 @@
+<main class="celebrate-page">
+  <audio #celebrationSong [src]="songUrl" autoplay loop preload="auto" aria-label="Celebration song"></audio>
+  <audio #voiceNote [src]="voiceNoteUrl" preload="metadata"></audio>
+  <header class="celebrate-header">
+    <a class="brand" routerLink="/home"><img src="/WhatsApp%20Image%202026-06-03%20at%2000.06.36.jpeg" alt="" /><span>Shreya's Birthday</span></a>
+    <nav aria-label="Birthday card sections"><a routerLink="/home">HOME</a><a routerLink="/story">OUR STORY</a><a routerLink="/memories">MEMORIES</a><a routerLink="/wish-box">WISH BOX</a><a class="celebrate-link active" routerLink="/celebrate">CELEBRATE ✨</a></nav>
+  </header>
+
+  <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="string string-top" aria-hidden="true">• · • · • · • · • · • · •</div>
+  <div class="string string-bottom" aria-hidden="true">• · • · • · • · • · • · •</div>
+
+  <section class="celebration-stage">
+    <div class="stage-intro">
+      <p class="eyebrow">A private little celebration</p>
+      <h1>For you, <em>Shreya</em></h1>
+      <p class="intro-copy">Stay here for a moment. The room is getting ready for your birthday.</p>
+    </div>
+
+    <div class="timeline-steps" aria-label="Celebration progress">
+      <div class="step step-lights"><span>01</span><b>Lights</b></div><i></i><div class="step step-balloons"><span>02</span><b>Balloons</b></div><i></i><div class="step step-cake"><span>03</span><b>Cake</b></div><i></i><div class="step step-wish"><span>04</span><b>Wish</b></div>
+    </div>
+
+    <div class="stage-window">
+      <div class="stage-curtain curtain-left"></div><div class="stage-curtain curtain-right"></div>
+      <div class="stage-lights" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="balloon balloon-one" aria-hidden="true"></div><div class="balloon balloon-two" aria-hidden="true"></div><div class="balloon balloon-three" aria-hidden="true"></div><div class="balloon balloon-four" aria-hidden="true"></div>
+      <div class="cake-scene" aria-label="Birthday cake">
+        <div class="cake-plate"></div><div class="cake"><div class="candle candle-one"><i></i></div><div class="candle candle-two"><i></i></div><div class="candle candle-three"><i></i></div><div class="cake-top"></div><div class="cake-body"></div><div class="drip drip-one"></div><div class="drip drip-two"></div><div class="drip drip-three"></div><span class="cake-heart">♥</span></div>
+      </div>
+      <div class="firework firework-left" aria-hidden="true">✦</div><div class="firework firework-right" aria-hidden="true">✦</div><div class="confetti confetti-one" aria-hidden="true">✧</div><div class="confetti confetti-two" aria-hidden="true">♥</div><div class="confetti confetti-three" aria-hidden="true">✦</div>
+      <div class="memory-bubble bubble-one">First rose 🌹</div><div class="memory-bubble bubble-two">Golgappe date 🥤</div><div class="memory-bubble bubble-three">Bawari ka sandwich 🥪</div><div class="memory-bubble bubble-four">First movie date 🎬</div>
+    </div>
+
+    <div class="stage-caption"><p class="caption-lights">The lights are waking up...</p><p class="caption-balloons">One by one, your balloons are here.</p><p class="caption-cake">Make a wish, birthday girl ✨ <button type="button" (click)="makeWish(); resumeSong()">Make my wish</button></p><p class="caption-final">Wish granted. You are my favourite celebration. ♡</p></div>
+    @if (wished()) { <div class="wish-reveal"><span>✦</span><strong>Wish unlocked</strong><small>Every day with you is my favourite memory.</small></div> }
+    <section class="surprise-choices"><p class="eyebrow">Choose your ending</p><div><button type="button" (click)="chooseSurprise('voice'); playVoiceNote()">Hear my voice 🎙️</button><button type="button" routerLink="/wish-box">Leave your wish ✨</button><button type="button" (click)="chooseSurprise('memory')">Best memory 📸</button></div>@if (selectedSurprise()) { <p class="choice-result">Your <strong>{{ selectedSurprise() }}</strong> surprise is waiting for you, Shreya ♡</p> }</section>
+    <a class="back-button" routerLink="/home">Return to birthday home</a>
+  </section>
+</main>

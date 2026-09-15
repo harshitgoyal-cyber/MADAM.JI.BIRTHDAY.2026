@@ -1,0 +1,59 @@
+<main class="story-page">
+  <header class="story-header">
+    <button class="brand" type="button" (click)="goHome()">
+      <img src="/WhatsApp%20Image%202026-06-03%20at%2000.06.36.jpeg" alt="" />
+      <span>Shreya's Birthday</span>
+    </button>
+    <nav aria-label="Birthday card sections">
+      <a routerLink="/home">HOME</a><a class="active" routerLink="/story">OUR STORY</a><a routerLink="/memories">MEMORIES</a><a routerLink="/wish-box">WISH BOX</a><a routerLink="/home" fragment="gifts">SURPRISES</a><a class="celebrate-link" routerLink="/celebrate">CELEBRATE ✨</a>
+    </nav>
+    <button class="logout-button" type="button" (click)="logout()" aria-label="Return to login">↩</button>
+  </header>
+
+  <section class="story-intro">
+    <p class="eyebrow">Every date holds a little piece of us</p>
+    <h1>Our Story for <em>Shreya</em></h1>
+    <p class="intro-copy">Friendship se pyaar tak, ladhaiyon se patch-ups tak — yeh hum dono ki woh kahani hai jo har naye din ke saath aur khoobsurat hoti gayi.</p>
+    <div class="petal petal-one" aria-hidden="true">✿</div><div class="petal petal-two" aria-hidden="true">✿</div>
+  </section>
+
+  <section class="timeline-section" aria-label="Our relationship timeline">
+    <div class="chapter-heading"><span>01</span><h2>Friendship <em>⭐</em></h2><p>Jahan se sab kuch shuru hua</p></div>
+    <div class="timeline">
+      @for (moment of moments; track moment.date; let index = $index) {
+        @if (index === 7) {
+          <div class="chapter-heading relationship-heading"><span>02</span><h2>Relationship <em>❤️</em></h2><p>Jab dil ne finally apni baat keh di</p></div>
+        }
+        <article class="moment" [class.moment-left]="index % 2 === 0" [class.moment-right]="index % 2 !== 0">
+          <div class="moment-dot">{{ index + 1 }}</div>
+          <div class="moment-card">
+            <div class="moment-image">
+              @if (!availableImages.has(index)) { <span>{{ moment.emoji }}</span><small>Add story-{{ (index + 1).toString().padStart(2, '0') }}.jpg</small> }
+              <img [class.is-visible]="availableImages.has(index)" [src]="moment.image" [alt]="moment.title" (load)="imageLoaded(index)" />
+            </div>
+            <div class="moment-content"><time>{{ moment.date }}</time><h3>{{ moment.title }} {{ moment.emoji }}</h3><p>{{ moment.text }}</p></div>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="heart-letter">
+    <div class="letter-flower" aria-hidden="true">✿</div>
+    <p class="eyebrow">The words that changed everything</p>
+    <h2>“Crush nahi tha mujh par,<br /><em>pyaar tha mujhse.”</em></h2>
+    <p class="letter-intro">6 November ka woh gift, jisme Shreya ne apne dil ki woh baat likhi jo shayad dono bahut pehle se jaante the.</p>
+    <blockquote>
+      <p>“Mujhe aapse itna attachment ho gaya na ki bas main bata nahi sakti. Itna zyada attachment hai na aapse, itna aaj kisi se bhi nahi.”</p>
+      <cite>— Shreya, your Bawari 💗</cite>
+    </blockquote>
+  </section>
+
+  <section class="names-section">
+    <p class="eyebrow">Five names, one favourite person</p>
+    <h2>My Shreya, My <em>Everything</em></h2>
+    <div class="names"><span>Bawari 💗</span><span>Akka 💕</span><span>Madam jii 💝</span><span>Devi 💗</span><span>Baccha 💗</span></div>
+  </section>
+
+  <footer>Written with every memory, for Shreya ♡ <button type="button" (click)="goHome()">Back to home</button></footer>
+</main>

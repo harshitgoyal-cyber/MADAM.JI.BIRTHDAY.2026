@@ -1,0 +1,37 @@
+<main class="login-page">
+  <div class="glow glow-one"></div>
+  <div class="glow glow-two"></div>
+  <div class="petal-cluster petal-cluster-left" aria-hidden="true">✿</div>
+  <div class="petal-cluster petal-cluster-right" aria-hidden="true">✿</div>
+
+  <section class="login-card" aria-labelledby="login-title">
+    <div class="card-sparkle sparkle-one" aria-hidden="true">✦</div>
+    <div class="card-sparkle sparkle-two" aria-hidden="true">♡</div>
+    <img class="brand-logo" src="/WhatsApp%20Image%202026-06-03%20at%2000.06.36.jpeg" alt="Shreya's Birthday logo" />
+    <p class="eyebrow">A little surprise, just for you</p>
+    <h1 id="login-title">Happy Birthday!</h1>
+    <p class="subtitle">Sign in to reveal your special surprise, love!</p>
+
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+      <label class="field" for="username">
+        <span class="field-icon">♙</span>
+        <input id="username" name="username" [(ngModel)]="username" placeholder="Username" autocomplete="username" required />
+        <span class="field-flower" aria-hidden="true">✿</span>
+      </label>
+      <label class="field" for="password">
+        <span class="field-icon flower-icon">✿</span>
+        <input id="password" name="password" [(ngModel)]="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password" autocomplete="current-password" required />
+        <button class="icon-button" type="button" [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'" (click)="showPassword = !showPassword">{{ showPassword ? '◉' : '◌' }}</button>
+        <span class="lock-icon" aria-hidden="true">▣</span>
+      </label>
+      <p class="forgot">Forgot Password?</p>
+      <button class="login-button" type="submit" [disabled]="loginForm.invalid">Login to Surprise <span aria-hidden="true">♡</span></button>
+      <label class="remember">
+        <input type="checkbox" name="rememberMe" [(ngModel)]="rememberMe" />
+        <span class="checkmark">✓</span><span>Remember me</span>
+      </label>
+      @if (errorMessage) { <p class="error-message" role="alert">{{ errorMessage }}</p> }
+    </form>
+    <p class="signup">Not registered yet? <span>Sign Up Here</span></p>
+  </section>
+</main>

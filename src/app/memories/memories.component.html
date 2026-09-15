@@ -1,0 +1,35 @@
+<main class="memories-page">
+  <header class="memories-header">
+    <a class="brand" routerLink="/home"><img src="/WhatsApp%20Image%202026-06-03%20at%2000.06.36.jpeg" alt="" /><span>Shreya's Birthday</span></a>
+    <nav aria-label="Birthday card sections">
+      <a routerLink="/home">HOME</a><a routerLink="/story">OUR STORY</a><a class="active" routerLink="/memories">MEMORIES</a><a routerLink="/wish-box">WISH BOX</a><a routerLink="/home" fragment="gifts">SURPRISES</a><a class="celebrate-link" routerLink="/celebrate">CELEBRATE ✨</a>
+    </nav>
+    <button class="logout-button" type="button" (click)="logout()" aria-label="Return to login">↩</button>
+  </header>
+
+  <section class="memories-intro">
+    <p class="eyebrow">The moments between the milestones</p>
+    <h1>Our Beautiful Memories, <em>Shreya</em> <span>🌸</span></h1>
+    <p>Story mein jo bade chapters hain, unke beech chhupe hue yeh chhote moments hi humari kahani ko itna special banate hain.</p>
+    <div class="string-lights" aria-hidden="true">✦ · ✧ · ✦ · ✧ · ✦ · ✧ · ✦</div>
+  </section>
+
+  <section class="memory-wall" aria-label="Our beautiful memories">
+    @for (memory of memories; track memory.date; let index = $index) {
+      <article class="polaroid" [class.tilt-left]="index % 3 === 0" [class.tilt-right]="index % 3 === 1">
+        <div class="photo-frame">
+          <div class="placeholder"><span>{{ memory.emoji }}</span><small>Add memory-{{ (index + 1).toString().padStart(2, '0') }}.jpg</small></div>
+          <img [class.is-visible]="availableImages.has(index)" [src]="memory.image" [alt]="memory.title" (load)="imageLoaded(index)" />
+        </div>
+        <div class="polaroid-copy"><time>{{ memory.date }}</time><h2>{{ memory.title }} <span>{{ memory.emoji }}</span></h2><p>{{ memory.note }}</p></div>
+      </article>
+    }
+  </section>
+
+  <section class="memory-footer">
+    <p class="eyebrow">Some memories don't need a date</p>
+    <h2>Every day with you is my favourite <em>page.</em> ♡</h2>
+    <p>Bawari · Akka · Madam jii · Devi · Baccha</p>
+  </section>
+  <footer>Made with every little memory, for Shreya ♡ <button type="button" routerLink="/home">Back to home</button></footer>
+</main>

@@ -1,0 +1,53 @@
+<main class="home-page">
+  <div class="ambient ambient-left" aria-hidden="true"></div>
+  <div class="ambient ambient-right" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" routerLink="/home" fragment="top"><img src="/WhatsApp%20Image%202026-06-03%20at%2000.06.36.jpeg" alt="" /> <span>Shreya's Birthday</span></a>
+    <nav aria-label="Birthday card sections">
+      <a class="active" routerLink="/home" fragment="top">Home</a><a routerLink="/story">Our Story</a><a routerLink="/memories">Memories</a><a routerLink="/wish-box">Wish Box</a><a routerLink="/home" fragment="gifts">Surprises</a><a class="celebrate-link" routerLink="/celebrate">Celebrate ✨</a>
+    </nav>
+    <button class="logout-button" type="button" (click)="logout()" aria-label="Return to login">↩</button>
+  </header>
+
+  <div class="page-content" id="top">
+    <section class="hero" id="story">
+      <div class="hero-copy reveal reveal-one">
+        <p class="eyebrow">For the girl who makes life brighter</p>
+        <h1>Happy Birthday,<br /><em>My Beloved Shreya!</em></h1>
+        <p class="hero-message">To the most incredible woman on your special day.<br />Thank you for filling my life with happiness.</p>
+        <button class="primary-button" type="button" (click)="revealSurprise()">Open Your Surprise Box <span>✦</span></button>
+      </div>
+      <div class="hero-art reveal reveal-two" aria-hidden="true">
+        <div class="halo"></div><div class="hero-heart heart-a">♡</div><div class="hero-heart heart-b">♥</div><div class="hero-heart heart-c">♡</div><div class="hero-gift">♥</div>
+      </div>
+    </section>
+
+    <section class="section memories-section" id="memories">
+      <div class="section-heading"><p class="eyebrow">The little moments</p><h2>A Gallery of Love <span>📸</span></h2></div>
+      <div class="memory-grid">
+        @for (memory of memories; track memory.title; let index = $index) {
+          <article class="memory-card" [style.--delay.ms]="index * 80"><img [src]="memory.image" [alt]="memory.title" /><div class="memory-caption"><strong>{{ memory.title }}</strong><span>{{ memory.emoji }}</span></div></article>
+        }
+      </div>
+    </section>
+
+    <section class="letter-section section" id="letter">
+      <div class="letter-paper"><div class="tape tape-left" aria-hidden="true"></div><div class="tape tape-right" aria-hidden="true"></div>
+        <p class="eyebrow">A note from my heart</p><h2>A Letter From My Heart <span>💌</span></h2>
+        <div class="letter-copy"><p>My Dearest Shreya,</p><p>On this beautiful day, I celebrate you and all the love you bring. I wrote this little corner of the internet just to show you how special you are. May this year bring you all the joy and success you deserve.</p><p class="letter-signoff">Forever yours,<br /><em>Love,</em><br /><strong>Your Devoted Soulmate.</strong></p></div>
+      </div>
+    </section>
+
+    <section class="section gifts-section" id="gifts">
+      <div class="section-heading"><p class="eyebrow">Three tiny promises</p><h2>Your Surprise Gifts <span>🎁</span></h2></div>
+      <div class="gift-grid">
+        @for (gift of gifts; track gift.title) {
+          <button class="gift-card" type="button" [class.selected]="selectedGift === gift.title" (click)="chooseGift(gift.title)"><span class="gift-icon"><i>{{ gift.icon }}</i><b>♥</b></span><span>{{ gift.title }} {{ gift.emoji }}</span></button>
+        }
+      </div>
+      @if (selectedGift) { <p class="gift-message">A little promise for you: <strong>{{ selectedGift }}</strong> is waiting. The best part is doing it together. ♡</p> }
+    </section>
+  </div>
+  <footer>Made with every little bit of love, for Shreya ♡</footer>
+</main>
