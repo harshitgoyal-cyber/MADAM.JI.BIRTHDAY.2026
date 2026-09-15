@@ -18,7 +18,7 @@ type Memory = {
 })
 export class MemoriesComponent {
   readonly memories: Memory[] = [
-    { date: '13 July', title: 'The mandir reason', note: 'Usne mujhe apne mandir jaane ka reason bataya. Chhoti si baat thi, par mujhe laga woh apni duniya ka ek aur door khol rahi hai.', emoji: '🛕', image: '/memory-01.jpg' },
+    { date: '13 July', title: 'The mandir reason', note: 'Usne mujhe apne mandir jaane ka reason bataya. Chhoti si baat thi, par mujhe laga woh apni duniya ka ek aur door khol rahi hai.', emoji: '🛕', image: './memory-01.jpg' },
     { date: '14–16 August', title: 'Three days of ladhai', note: 'Bahut zyada ladhai hui humare beech. Phir bhi 16 August ko @bawari wapas aa gayi. Kuch connections naraz hokar bhi toot-te nahi.', emoji: '🌧️', image: '/memory-02.jpg' },
     { date: '10 September', title: 'Two months of friendship', note: 'Humari friendship ko do months complete hue. Har din ke saath woh meri favourite person banti ja rahi thi.', emoji: '⭐', image: '/memory-03.jpg' },
     { date: '29 September', title: 'Almost said it', note: 'Maine try kiya sab batane ka, par darr gaya ki kahin friendship bhi khatam na ho jaaye. Dil ki baat phir thodi der ke liye ruk gayi.', emoji: '🤍', image: '/memory-04.jpg' },

@@ -11,7 +11,7 @@ import { filter } from 'rxjs';
 export class App implements AfterViewInit {
   @ViewChild('birthdaySong') private birthdaySong?: ElementRef<HTMLAudioElement>;
 
-  protected readonly songUrl = '/Maiyya%20Do%20Patti%20Sachet%20%26%20Parampara%20Trending%202025%20-%20Vaibhav%20Sharma%20%28128k%29.mp3';
+  protected readonly songUrl = './Maiyya%20Do%20Patti%20Sachet%20%26%20Parampara%20Trending%202025%20-%20Vaibhav%20Sharma%20%28128k%29.mp3';
 
   constructor(private readonly router: Router) {}
 

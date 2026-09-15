@@ -19,7 +19,7 @@ type StoryMoment = {
 })
 export class StoryComponent {
   readonly moments: StoryMoment[] = [
-    { date: '10 July', title: 'Friendship begins', text: 'Usne pehli baar best-friend wali reel bheji. Ek chhoti si reel, aur ek bahut special beginning.', image: '/story-01.jpg', emoji: '⭐' },
+    { date: '10 July', title: 'Friendship begins', text: 'Usne pehli baar best-friend wali reel bheji. Ek chhoti si reel, aur ek bahut special beginning.', image: './story-01.jpg', emoji: '⭐' },
     { date: '4 August', title: 'The first friendship band', text: 'Pehli baar kisi ladki ne friendship band diya, aur woh bhi meri crush ne. Us din ki khushi alag hi thi.', image: '/story-02.jpg', emoji: '💓' },
     { date: '10 August', title: 'One month of us', text: 'Humari friendship ko ek month complete hua. Beech mein ladhaiyan bhi aayi, par hum phir bhi ek doosre ke paas rahe.', image: '/story-03.jpg', emoji: '🫂' },
     { date: '16 August', title: 'Madam jii returns', text: 'Baat band hone ke baad Madam jii ne @bawari naam se new ID banayi. Shayad kuch log door jaakar bhi door nahi hote.', image: '/story-04.jpg', emoji: '💝' },
