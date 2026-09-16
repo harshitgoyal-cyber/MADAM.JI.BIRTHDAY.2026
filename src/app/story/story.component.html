@@ -29,7 +29,7 @@
           <div class="moment-card">
             <div class="moment-image">
               @if (!availableImages.has(index)) { <span>{{ moment.emoji }}</span><small>Add story-{{ (index + 1).toString().padStart(2, '0') }}.jpg</small> }
-              <img [class.is-visible]="availableImages.has(index)" [src]="moment.image" [alt]="moment.title" (load)="imageLoaded(index)" />
+              <img [style.object-position]="moment.objectPosition" [class.is-visible]="availableImages.has(index)" [src]="moment.image" [alt]="moment.title" (load)="imageLoaded(index)" />
             </div>
             <div class="moment-content"><time>{{ moment.date }}</time><h3>{{ moment.title }} {{ moment.emoji }}</h3><p>{{ moment.text }}</p></div>
           </div>
